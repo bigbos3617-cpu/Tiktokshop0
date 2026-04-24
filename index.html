@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pembuka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000; /* Background hitam sesuai gambar */
+        }
+
+        /* Style Gambar */
+        #gambarPembuka {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Biar gambar tidak terpotong */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+      
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gambar yang kamu kirim -->
+    <img id="gambarPembuka" src="tiktok-logo.png." alt="TikTok">
+
+    <!-- Angka hitungan mundur -->
+    <div id="timer">3</div>
+
+    <script>
+        // Waktu tunggu dalam detik
+        let waktu = 2;
+        let timerDisplay = document.getElementById('timer');
+        
+        // Hitung mundur
+        let hitungMundur = setInterval(function() {
+            waktu--;
+            timerDisplay.textContent = waktu;
+            
+            // Jika waktu habis
+            if(waktu <= 2) {
+                clearInterval(hitungMundur);
+                // Pindah ke halaman berikutnya
+                window.location.href = "aktivasi.html"; 
+            }
+        }, 1000);
+
+    </script>
+
+</body>
+</html>
+

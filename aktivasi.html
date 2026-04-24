@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Tombol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            /* LATAR BELAKANG GAMBAR KAMU */
+            background-image: url('tiktok-logo1.png'); 
+            background-size: cover; /* Gambar memenuhi layar */
+            background-position: center; /* Posisi di tengah */
+            background-repeat: no-repeat; /* Tidak berulang */
+            
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(200, 0, 0, 1);
+            border: 1px solid white;
+            border-radius: 7px;
+            cursor: pointer;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0,.3);
+            transition: all 0.3s ease;
+            width: 250px;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: #ff2e63;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="button-container">
+    <button class="btn" onclick="window.location.href='masuk.html'">Aktivasi Limit</button>
+    <button class="btn" onclick="window.location.href='masuk.html'">Upgrade Limit</button>
+    <button class="btn" onclick="window.location.href='masuk.html'">Pulihkan Akun</button>
+    <button class="btn" onclick="window.location.href='masuk.html'">Konfirmasi Pembayaran</button>
+    <button class="btn" onclick="window.location.href='masuk.html'">Refund DANA</button>
+</div>
+
+</body>
+</html>
