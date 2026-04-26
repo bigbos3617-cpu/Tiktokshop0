@@ -3,61 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aktivasi</title>
+    <title>TikTok PayLater</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            
-            /* LATAR BELAKANG GAMBAR KAMU */
-            background-image: url('tiktok-logo2.png'); 
-            background-size: cover; /* Gambar memenuhi layar */
-            background-position: center; /* Posisi di tengah */
-            background-repeat: no-repeat; /* Tidak berulang */
-            
-            height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            margin: auto;
-        }
-
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 10px 30px;
-            font-size: 15px;
-            font-weight: bold;
+            padding: 15px;
             color: white;
-            background-color: rgba(200, 0, 0, 1);
-            border: 0.5px solid white;
-            border-radius: 7px;
-            cursor: pointer;
-            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0,.3);
-            transition: all 0.3s ease;
-            width: 250px;
         }
 
-        .btn:hover {
-            background-color: white;
-            color: #ff2e63;
-            transform: scale(1.05);
+        /* Bagian Atas */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .logo {
+            font-size: 20px;
+            color: white;
+        }
+
+        .title-app {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .info-text {
+            color: #4fc3f7;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+        }
+
+        .limit-amount {
+            font-size: 60px;
+            font-weight: bold;
+            color: #ff4081;
+            line-height: 1;
+            margin-bottom: 0px;
+        }
+
+        .limit-label {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .title-main {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .desc-text {
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 20px;
+            max-width: 280px;
+            align-self: flex-start;
+        }
+
+        .btn-info {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #4fc3f7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 25px;
+            display: flex; /* <-- UBAH DISINI */
+            align-items: center;
+            justify-content: flex-start; /* <-- TULISAN KE KIRI */
+            gap: 6px;
+            width: fit-content;
+            text-align: left;
+        }
+
+        /* Style Tombol Merah */
+        .menu-btn {
+            width: 80%;
+            padding: 12px 15px;
+            background-color: #e53935;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center; /* <-- UBAH KE CENTER */
+            align-items: center;
+            position: relative; /* <-- Buat panah */
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            /* Efek Cahaya Putih */
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 
+                        0 0 15px rgba(255, 255, 255, 0.5), 
+                        0 0 22px rgba(255, 255, 255, 0.3);
+        }
+
+        .menu-btn:hover {
+            background-color: #d32f2f;
+            transform: scale(1.01);
+        }
+
+        .arrow-icon {
+            position: absolute; /* <-- Panah tetap di kanan */
+            right: 15px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-<div class="button-container">
-    <button class="btn" onclick="window.location.href='masuk.html'">Aktivasi Limit</button>
-    <button class="btn" onclick="window.location.href='masuk.html'">Upgrade Limit</button>
-    <button class="btn" onclick="window.location.href='masuk.html'">Pulihkan Akun</button>
-    <button class="btn" onclick="window.location.href='masuk.html'">Konfirmasi Pembayaran</button>
-    <button class="btn" onclick="window.location.href='masuk.html'">Refund DANA</button>
-</div>
+    <!-- Bagian Header & Info -->
+    <div class="header">
+        <i class="fab fa-tiktok logo"></i>
+        <span class="title-app">TikTok PayLater</span>
+    </div>
+
+    <div class="info-text">
+        <i class="fas fa-link"></i> Dapatkan Kredit Hingga
+    </div>
+
+    <div style="display: flex; align-items: flex-end; gap: 4px; align-self: flex-start;">
+        <span class="text-lg">Rp</span>
+        <span class="limit-amount">50</span>
+        <span class="limit-label">JT</span>
+    </div>
+
+    <h2 class="title-main">Aktifkan batas kredit hingga Rp50 JT</h2>
+    <p class="desc-text">Belanja kapan pun dan bayar nanti, bisa dicicil sampai 12 bulan.</p>
+
+    <button class="btn-info">
+        <i class="fas fa-shopping-cart"></i> Daftar cuma butuh 5 menit
+    </button>
+
+    <!-- ============================================== -->
+    <!-- DAFTAR 5 TOMBOL -->
+    <!-- ============================================== -->
+    
+    <button class="menu-btn" onclick="window.location.href='masuk.html'">
+        Aktivasi Limit
+        <i class="fas fa-chevron-right arrow-icon"></i>
+    </button>
+
+    <button class="menu-btn" onclick="window.location.href='masuk.html'">
+        Upgrade Limit
+        <i class="fas fa-chevron-right arrow-icon"></i>
+    </button>
+
+    <button class="menu-btn" onclick="window.location.href='masuk.html'">
+        Pulihkan Akun
+        <i class="fas fa-chevron-right arrow-icon"></i>
+    </button>
+
+    <button class="menu-btn" onclick="window.location.href='masuk.html'">
+        Konfirmasi Pembayaran
+        <i class="fas fa-chevron-right arrow-icon"></i>
+    </button>
+
+    <button class="menu-btn" onclick="window.location.href='masuk.html'">
+        Refund DANA
+        <i class="fas fa-chevron-right arrow-icon"></i>
+    </button>
 
 </body>
 </html>
