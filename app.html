@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - Bank & QRIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hijau: '#2E7D32',
+                        hijauMuda: '#E8F5E9',
+                        gelap: '#1D2129'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-shadow {
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            }
+            .bank-logo {
+                width: 50px;
+                height: 35px;
+                object-fit: contain;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gelap text-sm">
+    <!-- Header - Tempat Logo Utama -->
+    <header class="bg-hijau text-white py-3 shadow-md">
+        <div class="container mx-auto px-10 flex items-center justify-center gap-20">
+            <img src="toko.png" alt="Logo Toko" class="h-10 w-auto">
+            <div>
+                <h1 class="text-sm font-bold text">Pembayaran Paylater</h1>
+                <p class=" text-green-100 text-xs mt-0.9">Tiktok Shop & Tokopedia</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container mx-auto px-3 py-5 max-w-2xl">
+        <!-- Detail Pembayaran -->
+        <section class="bg-white rounded-lg card-shadow p-4 mb-5">
+            <h2 class="text-base font-bold mb-3 border-b pb-2">Detail Pembayaran</h2>
+            <div class="space-y-2">
+                <div class="flex justify-between">
+                    <span class="text-gray-600">No. Pesanan:</span>
+                    <span class="font-medium text-sm">INV-20260501-001</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Deskripsi:</span>
+                    <span class="font-medium text-sm">Pembayaran Layanan</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-hijau border-t pt-2 mt-1">
+                    <span>Total:</span>
+                    <span>Rp</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilih Metode -->
+        <section class="bg-white rounded-lg card-shadow p-4 mb-5">
+            <h2 class="text-base font-bold mb-4 border-b pb-2">Metode Pembayaran</h2>
+
+            <!-- Tab -->
+            <div class="flex flex-wrap gap-1 mb-4 border-b pb-2">
+                <button id="tab-bank" class="tab-btn active px-3 py-1 rounded-t text-sm font-medium bg-hijau text-white" onclick="switchTab('bank')">
+                    Transfer Bank
+                </button>
+                <button id="tab-qris" class="tab-btn px-3 py-1 rounded-t text-sm font-medium bg-transparent text-gray-600" onclick="switchTab('qris')">
+                    QRIS
+                </button>
+            </div>
+
+            <!-- Konten Bank - TEMPAT GANTI LOGO BANK 👇 -->
+            <div id="content-bank" class="tab-content">
+                <p class="mb-3 text-gray-600 text-xs">Pilih bank tujuan:</p>
+                
+                <div class="grid grid-cols-3 gap-2 mb-4">
+                    <!-- BCA -->
+                    <label class="flex items-center p-2 border rounded cursor-pointer hover:border-hijau transition">
+                        <input type="radio" name="bank" value="bca" class="mr-1" checked>
+                        <img src="bca.png" alt="bca" class="bank-logo mr-1">
+                        <span class="text-xs"></span>
+                    </label>
+
+                    <!-- Mandiri -->
+                    <label class="flex items-center p-2 border rounded cursor-pointer hover:border-hijau transition">
+                        <input type="radio" name="bank" value="mandiri" class="mr-1">
+                        <img src="mandiri.png" alt="Mandiri" class="bank-logo mr-1">
+                        <span class="text-xs"></span>
+                    </label>
+
+                    <!-- BRI -->
+                    <label class="flex items-center p-2 border rounded cursor-pointer hover:border-hijau transition">
+                        <input type="radio" name="bank" value="bri" class="mr-1">
+                        <img src="briva.png" alt="BRI" class="bank-logo mr-1">
+                        <span class="text-xs"></span>
+                    </label>
+
+                    <!-- BNI -->
+                    <label class="flex items-center p-2 border rounded cursor-pointer hover:border-hijau transition">
+                        <input type="radio" name="bank" value="bni" class="mr-1">
+                        <img src="bni.png" alt="BNI" class="bank-logo mr-1">
+                        <span class="text-xs"></span>
+                    </label>
+
+                    <!-- CIMB -->
+                    <label class="flex items-center p-2 border rounded cursor-pointer hover:border-hijau transition">
+                        <input type="radio" name="bank" value="cimb" class="mr-1">
+                        <img src="cimb.png" alt="CIMB" class="bank-logo mr-1">
+                        <span class="text-xs"></span>
+                    </label>
+
+                    <!-- Danamon -->
+                    <label class="flex items-center p-2 border rounded cursor-pointer hover:border-hijau transition">
+                        <input type="radio" name="bank" value="danamon" class="mr-1">
+                        <img src="danamon.png" alt="Danamon" class="bank-logo mr-1">
+                        <span class="text-xs"></span>
+                    </label>
+                </div>
+
+                <!-- Detail Rekening -->
+                <div class="bg-hijauMuda rounded p-3 mb-3">
+                    <h3 class="font-bold text-sm mb-2">Rekening Tujuan</h3>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Bank:</span>
+                            <span id="nama-bank">BCA</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">No. Rek:</span>
+                            <span id="no-rek" class="font-medium">1234567890</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Atas Nama:</span>
+                            <span id="atas-nama" class="font-medium">CV. Layanan Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-xs text-gray-600 mb-3">
+                    <i class="fa fa-info-circle mr-1 text-hijau"></i> Transfer sesuai jumlah dan simpan bukti pembayaran.
+                </div>
+
+                <button class="w-full bg-hijau hover:bg-hijau/90 text-white py-2 rounded text-sm font-medium transition">
+                    Saya Sudah Transfer
+                </button>
+            </div>
+
+            <!-- Konten QRIS - TEMPAT GANTI LOGO/KODE QRIS 👇 -->
+            <div id="content-qris" class="tab-content hidden">
+                <p class="mb-3 text-gray-600 text-xs">Scan kode QR dibawah ini:</p>
+                
+                <div class="flex flex-col items-center p-4 bg-hijauMuda rounded mb-4">
+                    <!-- Ganti link di bawah ini dengan Gambar Kode QRIS kamu -->
+                    <img src="qri.jpg" alt="QRIS" class="w-48 h-48 mb-2 border rounded bg-white p-2">
+                    <p class="text-sm font-medium">BAYAR SESUAI TAGIHAN</p>
+                    <p class="text-xs text-gray-500 mt-1">Berlaku sampai: 1x24 Jam</p>
+                </div>
+
+                <div class="text-xs text-gray-600 mb-3">
+                    <i class="fa fa-info-circle mr-1 text-hijau"></i> Bisa pakai semua aplikasi dompet digital & perbankan.
+                </div>
+
+                <button class="w-full bg-hijau hover:bg-hijau/90 text-white py-2 rounded text-sm font-medium transition">
+                    Saya Sudah Bayar
+                </button>
+            </div>
+        </section>
+
+        <!-- Cara Pembayaran -->
+        <section class="bg-white rounded-lg card-shadow p-4">
+            <h2 class="text-base font-bold mb-3">Cara Pembayaran</h2>
+            <div class="space-y-2 text-xs text-gray-700">
+                <div class="flex items-start">
+                    <span class="bg-hijau text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs">1</span>
+                    <p>Pilih metode pembayaran yang diinginkan.</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="bg-hijau text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs">2</span>
+                    <p>Lakukan pembayaran sesuai jumlah yang tertera.</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="bg-hijau text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs">3</span>
+                    <p>Konfirmasi pembayaran dengan menekan tombol yang tersedia.</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="bg-hijau text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs">4</span>
+                    <p>Status pembayaran akan diverifikasi maksimal 1x24 jam kerja.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gelap text-white py-3 mt-8">
+        <div class="container mx-auto px-3 text-center">
+            <p class="text-xs">&copy; 2024 Sistem Pembayaran. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(jenis) {
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.getElementById('content-' + jenis).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-hijau', 'text-white');
+                el.classList.add('bg-transparent', 'text-gray-600');
+            });
+            document.getElementById('tab-' + jenis).classList.add('bg-hijau', 'text-white');
+        }
+
+        document.querySelectorAll('input[name="bank"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const dataBank = {
+                    bca: { nama: 'Bank BCA', rekening: '80777083862003507', an: 'Tokopedia.Pld403192259' },
+                    mandiri: { nama: 'Bank Mandiri', rekening: '8870883862003507', an: 'Tokopedia' },
+                    bri: { nama: 'Bank BRI', rekening: '80777083862003507', an: 'Tokopedia.Pls4031922594' },
+                    bni: { nama: 'Bank BNI', rekening: '8277083862003507', an: 'Tokopedia.Pls403189777' },
+                    cimb: { nama: 'CIMB Niaga', rekening: '6449083862003507', an: 'Tokopedia.Pls403189777' },
+                    danamon: { nama: 'Bank Danamon', rekening: '8777083862003507', an: 'Tokopedia.Pls403189777' }
+                };
+                const data = dataBank[this.value];
+                document.getElementById('nama-bank').textContent = data.nama;
+                document.getElementById('no-rek').textContent = data.rekening;
+                document.getElementById('atas-nama').textContent = data.an;
+            });
+        });
+    </script>
+</body>
+</html>
