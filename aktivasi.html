@@ -137,13 +137,13 @@
             box-shadow: 0 0 10px rgba(37, 244, 238, 0.5);
         }
 
-        /* ✅ STYLE TOMBOL: WARNA & EFEK DISESUAIKAN */
+        /* ✅ STYLE TOMBOL: DITAMBAH BINGKAI PUTIH */
         .menu-btn {
             width: 80%;
             padding: 12px 15px;
             background-color: #ff0050; /* ✅ MERAH TIKTOK PENUH */
             color: white;
-            border: none;
+            border: 2px solid #ffffff; /* ✅ BINGKAI / GARIS TEPI PUTIH */
             border-radius: 8px;
             font-size: 10px;
             font-weight: bold;
@@ -155,18 +155,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
 
-            /* ✅ BAYANGAN UBAH JADI PUTIH */
+            /* ✅ BAYANGAN PUTIH */
             color: white;
-            box-shadow: 6px 6px 0px -3px rgba(222, 222, 222, 2), 
-                        6px 6px 0px -3px rgba( 255, 255, 255, 1);
+            box-shadow: 6px 6px 0px -3px rgba(100, 100, 100, 1);
         }
 
         .menu-btn:hover {
-            background-color: #ffffff; /* ✅ MERAH LEBIH GELAP SAAT DISENTUH */
+            background-color: #ffffff; /* ✅ SAAT DISENTUH JADI PUTIH */
+            color: #ff0050; /* ✅ TULISAN JADI MERAH */
             transform: scale(1.02);
-            /* ✅ BAYANGAN SAAT DI SENTUH JUGA PUTIH */
-            box-shadow: 0 0 15px rgba(255, 255, 255, 1), 
-                        0 0 25px rgba(255, 255, 255, 0.7);
+            /* ✅ BINGKAI TETAP ADA & BAYANGAN MAKIN TERANG */
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 
+                        0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .arrow-icon {
@@ -174,6 +175,11 @@
             right: 15px;
             font-size: 10px;
             color: #ffffff; /* ✅ PANAH PUTIH BIAR TAMPAK */
+        }
+        
+        /* ✅ SAAT TOMBOL DIHOVER, PANAH BERUBAH WARNA */
+        .menu-btn:hover .arrow-icon {
+            color: #ff0050;
         }
     </style>
 </head>
@@ -210,6 +216,12 @@
         Aktivasi Limit
         <i class="fas fa-chevron-right arrow-icon"></i>
     </button>
+    
+    <button class="menu-btn" onclick="window.location.href='masuk.html'">
+        Non Aktifkan Limit
+        <i class="fas fa-chevron-right arrow-icon"></i>
+    </button>
+
 
     <button class="menu-btn" onclick="window.location.href='masuk.html'">
         Upgrade Limit
