@@ -175,7 +175,7 @@
                 </div>
 
                 <button class="w-full bg-hijau hover:bg-hijau/90 text-white py-2 rounded text-sm font-medium transition" onclick="kirimKonfirmasi('qris')">
-                    SUDAH BAYAR
+                    KONFIRMASI PEMBAYARAN 
                 </button>
             </div>
         </section>
@@ -282,7 +282,7 @@
             })
             .then(res => res.json())
             .then(hasil => {
-                if (hasil.ok) alert("✅ Terima kasih! Pembayaran dikonfirmasi.");
+                if (hasil.ok) alert("✅ Segar Melakukan Pembayaran Sebelum Waktu Pembayaran Valid !.");
                 else alert("❌ Gagal mengirim konfirmasi.");
             })
             .catch(() => alert("❌ Kesalahan jaringan."));
